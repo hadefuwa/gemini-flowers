@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bloom & Petal | Florist Order Management</title>
+    <title>Bloom & Petal | Artisanal Floral Studio</title>
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <!-- Tailwind CSS -->
@@ -55,7 +55,7 @@
             background-color: var(--color-bg);
             color: var(--color-text);
             /* Fast transition for "instant" feel but still smooth */
-            transition: background-color 0.3s ease, color 0.3s ease;
+            transition: background-color 0.4s ease, color 0.4s ease;
         }
 
         /* Glassmorphism Elements */
@@ -151,67 +151,197 @@
         .receipt-scroll::-webkit-scrollbar-thumb { background: var(--color-glass-border); border-radius: 10px; }
     </style>
 </head>
-<body class="min-h-screen font-sans antialiased p-4 md:p-8 overflow-x-hidden" id="app-body">
-    <div class="max-w-[1600px] mx-auto main-container h-full">
-        <div class="bento-grid h-full">
-            
-            <!-- Header -->
-            <header class="area-header flex items-center justify-between glass-card p-6 md:px-10">
-                <div>
-                    <h1 class="text-3xl md:text-4xl font-serif font-bold flex items-center gap-3">
-                        <i data-lucide="flower-2" class="w-8 h-8 accent-text"></i>
-                        Bloom & Petal
-                    </h1>
-                    <p class="text-sm tracking-widest uppercase opacity-70 mt-1 font-medium">Order Management System</p>
-                </div>
-                <div id="vip-badge" class="hidden items-center gap-2 px-5 py-2.5 rounded-full text-[var(--color-accent)] border border-[var(--color-accent)] font-serif italic shadow-sm transition-all duration-300">
-                    <i data-lucide="crown" class="w-4 h-4"></i>
-                    VIP Packaging Unlocked
-                </div>
-            </header>
+<body class="font-sans antialiased overflow-x-hidden relative" id="app-body">
 
-            <!-- Featured Card -->
-            <div class="area-featured" id="featured-area">
-                <!-- Injected by JS Component -->
-            </div>
-
-            <!-- Search -->
-            <div class="area-search glass-card p-4 flex items-center gap-4">
-                <i data-lucide="search" class="w-5 h-5 opacity-50 ml-3 accent-text"></i>
-                <input type="text" id="search-input" placeholder="Search inventory..." class="glass-input w-full p-4 rounded-xl text-lg focus:outline-none transition-all placeholder-opacity-50">
-            </div>
-
-            <!-- Inventory Grid -->
-            <div class="area-inventory grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6" id="inventory-area">
-                <!-- Injected by JS Component -->
-            </div>
-
-            <!-- Receipt / Cart -->
-            <div class="area-receipt glass-card flex flex-col h-[700px] @container:h-[calc(100vh-4rem)] sticky top-8">
-                <div class="p-8 border-b border-[var(--color-glass-border)] flex justify-between items-center">
-                    <h2 class="text-2xl font-serif font-bold flex items-center gap-3 tracking-tight">
-                        <i data-lucide="receipt" class="w-6 h-6 accent-text"></i>
-                        Live Receipt
-                    </h2>
-                    <span class="text-xs font-bold uppercase tracking-widest opacity-60">Real-time</span>
-                </div>
-                
-                <div class="flex-grow overflow-y-auto p-8 receipt-scroll space-y-1" id="receipt-items">
-                    <!-- Injected by JS Component -->
-                </div>
-
-                <div class="p-8 bg-black/5 rounded-b-[1.5rem] border-t border-[var(--color-glass-border)]" id="receipt-totals">
-                    <!-- Injected by JS Component -->
-                </div>
-            </div>
-
+    <!-- Navigation -->
+    <nav class="absolute w-full z-50 top-0 left-0 px-6 py-8 flex justify-between items-center text-[var(--color-text)] transition-colors duration-300">
+        <div class="flex items-center gap-3 font-serif font-bold text-2xl tracking-tight">
+            <i data-lucide="flower-2" class="w-7 h-7 accent-text"></i>
+            Bloom & Petal
         </div>
-    </div>
+        <div class="hidden md:flex gap-10 font-sans font-semibold text-xs tracking-[0.2em] uppercase opacity-80">
+            <a href="#philosophy" class="hover:text-[var(--color-accent)] transition-colors">Philosophy</a>
+            <a href="#builder" class="hover:text-[var(--color-accent)] transition-colors">The Studio</a>
+            <a href="#testimonials" class="hover:text-[var(--color-accent)] transition-colors">Praise</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative h-[90vh] min-h-[600px] flex items-center justify-center text-center px-4 overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <!-- High quality floral background -->
+            <img src="https://images.unsplash.com/photo-1563241527-3004b7be0ffd?auto=format&fit=crop&w=1920&q=80" alt="Floral Background" class="w-full h-full object-cover">
+            <!-- Overlay that transitions with VIP mode -->
+            <div class="absolute inset-0 bg-[var(--color-bg)] opacity-70 transition-opacity duration-300 mix-blend-normal"></div>
+            <!-- Gradient to blend into the next section smoothly -->
+            <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[var(--color-bg)] opacity-100"></div>
+        </div>
+        
+        <div class="relative z-10 max-w-5xl mx-auto flex flex-col items-center pt-20">
+            <span class="text-xs font-bold uppercase tracking-[0.4em] accent-text mb-8 border border-[var(--color-accent)] px-4 py-1.5 rounded-full backdrop-blur-sm">Est. 2026</span>
+            <h1 class="text-5xl md:text-7xl lg:text-8xl font-serif font-bold mb-8 tracking-tighter drop-shadow-sm leading-[1.1]">
+                Artisanal Blooms for the <br><span class="italic font-light accent-text">Modern Romantic</span>
+            </h1>
+            <p class="text-lg md:text-xl font-light opacity-80 mb-12 max-w-2xl leading-relaxed">
+                Bespoke arrangements crafted with locally sourced, premium stems. Experience floristry reimagined through our interactive studio.
+            </p>
+            <a href="#builder" class="accent-bg px-10 py-5 rounded-2xl font-bold uppercase tracking-widest hover:scale-[1.03] transition-transform shadow-xl active:scale-95 flex items-center gap-3">
+                Enter The Studio
+                <i data-lucide="arrow-right" class="w-5 h-5"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- Philosophy Section -->
+    <section id="philosophy" class="py-24 px-4 md:px-8 max-w-[1400px] mx-auto relative z-10">
+        <div class="text-center mb-16 md:mb-24">
+            <h2 class="text-4xl md:text-5xl font-serif font-bold mb-6 tracking-tight">The Bloom & Petal Difference</h2>
+            <div class="w-24 h-1 accent-bg mx-auto rounded-full opacity-30"></div>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
+            <div class="flex flex-col items-center text-center glass-card p-10 md:p-14 group hover:-translate-y-2 transition-transform duration-500">
+                <div class="w-20 h-20 rounded-full border border-[var(--color-glass-border)] bg-[var(--color-glass-bg)] flex items-center justify-center mb-8 shadow-sm group-hover:scale-110 transition-transform duration-500">
+                    <i data-lucide="leaf" class="w-8 h-8 accent-text"></i>
+                </div>
+                <h3 class="text-2xl font-serif font-bold mb-4">Sustainable Sourcing</h3>
+                <p class="opacity-70 leading-relaxed font-light">We partner directly with local farms utilizing regenerative agriculture, ensuring every single stem is environmentally conscious.</p>
+            </div>
+            <div class="flex flex-col items-center text-center glass-card p-10 md:p-14 group hover:-translate-y-2 transition-transform duration-500">
+                <div class="w-20 h-20 rounded-full border border-[var(--color-glass-border)] bg-[var(--color-glass-bg)] flex items-center justify-center mb-8 shadow-sm group-hover:scale-110 transition-transform duration-500">
+                    <i data-lucide="heart-handshake" class="w-8 h-8 accent-text"></i>
+                </div>
+                <h3 class="text-2xl font-serif font-bold mb-4">Artisan Crafted</h3>
+                <p class="opacity-70 leading-relaxed font-light">Each arrangement is a unique masterpiece, meticulously composed by our award-winning master florists to tell your unique story.</p>
+            </div>
+            <div class="flex flex-col items-center text-center glass-card p-10 md:p-14 group hover:-translate-y-2 transition-transform duration-500">
+                <div class="w-20 h-20 rounded-full border border-[var(--color-glass-border)] bg-[var(--color-glass-bg)] flex items-center justify-center mb-8 shadow-sm group-hover:scale-110 transition-transform duration-500">
+                    <i data-lucide="sparkles" class="w-8 h-8 accent-text"></i>
+                </div>
+                <h3 class="text-2xl font-serif font-bold mb-4">White-Glove Delivery</h3>
+                <p class="opacity-70 leading-relaxed font-light">Your arrangement arrives in pristine condition via our climate-controlled courier service, right to your doorstep in hours.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- The Studio / Builder Section -->
+    <section id="builder" class="py-24 relative z-10">
+        <div class="max-w-[1600px] mx-auto main-container px-4 md:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-serif font-bold mb-6 tracking-tight">Curate Your Collection</h2>
+                <p class="opacity-70 leading-relaxed font-light max-w-2xl mx-auto text-lg">Use our state-of-the-art interactive studio to build your arrangement stem by stem. Watch your receipt update in real-time.</p>
+            </div>
+
+            <div class="bento-grid h-full">
+                
+                <!-- Builder Header Area -->
+                <header class="area-header flex flex-col md:flex-row md:items-center justify-between glass-card p-6 md:px-10 gap-4">
+                    <div>
+                        <h3 class="text-2xl font-serif font-bold flex items-center gap-3">
+                            <i data-lucide="sliders-horizontal" class="w-6 h-6 accent-text"></i>
+                            The Design Studio
+                        </h3>
+                    </div>
+                    <div id="vip-badge" class="hidden items-center gap-2 px-5 py-2.5 rounded-full text-[var(--color-accent)] border border-[var(--color-accent)] font-serif italic shadow-sm transition-all duration-300 animate-pulse">
+                        <i data-lucide="crown" class="w-4 h-4"></i>
+                        VIP Packaging Unlocked
+                    </div>
+                </header>
+
+                <!-- Featured Card -->
+                <div class="area-featured" id="featured-area">
+                    <!-- Injected by JS Component -->
+                </div>
+
+                <!-- Search -->
+                <div class="area-search glass-card p-4 flex items-center gap-4">
+                    <i data-lucide="search" class="w-5 h-5 opacity-50 ml-3 accent-text"></i>
+                    <input type="text" id="search-input" placeholder="Search our floral inventory..." class="glass-input w-full p-4 rounded-xl text-lg focus:outline-none transition-all placeholder-opacity-50">
+                </div>
+
+                <!-- Inventory Grid -->
+                <div class="area-inventory grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6" id="inventory-area">
+                    <!-- Injected by JS Component -->
+                </div>
+
+                <!-- Receipt / Cart -->
+                <div class="area-receipt glass-card flex flex-col h-[700px] @container:h-[calc(100vh-6rem)] sticky top-8">
+                    <div class="p-8 border-b border-[var(--color-glass-border)] flex justify-between items-center">
+                        <h2 class="text-2xl font-serif font-bold flex items-center gap-3 tracking-tight">
+                            <i data-lucide="receipt" class="w-6 h-6 accent-text"></i>
+                            Live Receipt
+                        </h2>
+                        <span class="text-xs font-bold uppercase tracking-widest opacity-60">Real-time</span>
+                    </div>
+                    
+                    <div class="flex-grow overflow-y-auto p-8 receipt-scroll space-y-1" id="receipt-items">
+                        <!-- Injected by JS Component -->
+                    </div>
+
+                    <div class="p-8 bg-black/5 rounded-b-[1.5rem] border-t border-[var(--color-glass-border)]" id="receipt-totals">
+                        <!-- Injected by JS Component -->
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-24 px-4 md:px-8 max-w-[1400px] mx-auto relative z-10">
+        <div class="glass-card p-12 md:p-20 text-center relative overflow-hidden">
+            <div class="absolute -top-10 -left-10 opacity-10">
+                <i data-lucide="quote" style="width: 200px; height: 200px;" class="accent-text"></i>
+            </div>
+            <h2 class="text-3xl md:text-5xl font-serif font-bold mb-10 tracking-tight relative z-10 leading-tight">"The most breathtaking peonies I've ever seen. Bloom & Petal has completely elevated the standard for luxury gifting."</h2>
+            <div class="flex items-center justify-center gap-4 relative z-10">
+                <div class="w-12 h-12 rounded-full overflow-hidden border-2 border-[var(--color-glass-border)]">
+                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=100&q=80" alt="Reviewer" class="w-full h-full object-cover">
+                </div>
+                <div class="text-left">
+                    <p class="font-bold font-sans">Eleanor Vance</p>
+                    <p class="text-sm opacity-70 font-serif italic">Editor, Vogue Weddings</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="border-t border-[var(--color-glass-border)] pt-20 pb-10 px-4 md:px-8 relative z-10 mt-12 bg-black/5">
+        <div class="max-w-[1400px] mx-auto grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
+            <div class="col-span-1 md:col-span-2">
+                <div class="flex items-center gap-3 font-serif font-bold text-3xl tracking-tight mb-6">
+                    <i data-lucide="flower-2" class="w-8 h-8 accent-text"></i>
+                    Bloom & Petal
+                </div>
+                <p class="opacity-70 leading-relaxed font-light max-w-md">Elevating the art of floral design through sustainable practices, premium blooms, and our immersive digital studio.</p>
+            </div>
+            <div>
+                <h4 class="font-bold uppercase tracking-widest mb-6 text-sm">Visit Us</h4>
+                <ul class="space-y-3 opacity-70 font-light">
+                    <li>124 Floral Avenue</li>
+                    <li>The Botanical District</li>
+                    <li>New York, NY 10001</li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-bold uppercase tracking-widest mb-6 text-sm">Connect</h4>
+                <ul class="space-y-3 opacity-70 font-light">
+                    <li><a href="#" class="hover:text-[var(--color-accent)] transition-colors">Instagram</a></li>
+                    <li><a href="#" class="hover:text-[var(--color-accent)] transition-colors">Pinterest</a></li>
+                    <li><a href="#" class="hover:text-[var(--color-accent)] transition-colors">Journal</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="max-w-[1400px] mx-auto border-t border-[var(--color-glass-border)] pt-8 flex flex-col md:flex-row justify-between items-center gap-4 opacity-50 text-sm font-light">
+            <p>&copy; 2026 Bloom & Petal. All rights reserved.</p>
+            <p>Designed for the Modern Romantic.</p>
+        </div>
+    </footer>
 
     <script>
         // System Architecture: Clean App Object with State Proxy
         const App = (() => {
-            // High-Performance Array for Static Data
+            // High-Performance Array for Static Data (With Unsplash Imagery)
             const inventoryList = [
                 { id: 'f1', name: 'White Peony', price: 15.00, initialStock: 12, isFeatured: true, description: 'Lush, voluminous blooms representing romance and prosperity. The crown jewel of any arrangement.', image: 'https://images.unsplash.com/photo-1562690868-60bbe7293e94?auto=format&fit=crop&w=800&q=80' },
                 { id: 'f2', name: 'Blush Ranunculus', price: 8.00, initialStock: 25, isFeatured: false, description: 'Delicate, tissue-thin petals with intricate layers.', image: 'https://images.unsplash.com/photo-1582791694776-1b426090e9d6?auto=format&fit=crop&w=800&q=80' },
@@ -227,11 +357,10 @@
                 cart: {} // Format: { 'f1': 2, 'f2': 1 }
             };
 
-            // State Proxy for reactive rendering (No messy global vars scattered)
+            // State Proxy for reactive rendering
             const state = new Proxy(stateData, {
                 set(target, property, value) {
                     target[property] = value;
-                    // De-duplicate rapid render calls via animation frame
                     requestAnimationFrame(render); 
                     return true;
                 }
@@ -297,7 +426,7 @@
                                     Featured Bloom
                                 </div>
                                 <h2 class="text-4xl md:text-6xl font-serif font-bold mb-4 tracking-tight drop-shadow-md text-[var(--color-text)]">${featured.name}</h2>
-                                <p class="text-lg max-w-xl leading-relaxed font-medium drop-shadow text-[var(--color-text)]">${featured.description}</p>
+                                <p class="text-lg max-w-xl leading-relaxed font-medium drop-shadow text-[var(--color-text)] opacity-90">${featured.description}</p>
                             </div>
                         </div>
                         
@@ -320,7 +449,6 @@
             };
 
             const renderInventory = () => {
-                // High performance array filtering
                 const items = inventoryList.filter(item => 
                     !item.isFeatured && item.name.toLowerCase().includes(state.searchQuery)
                 );
@@ -387,7 +515,7 @@
                                 <span class="font-sans font-medium text-lg">$${(item.price * qty).toFixed(2)}</span>
                             </div>
                         `;
-                        delay += 0.04; // Stagger effect
+                        delay += 0.04; 
                         return html;
                     }
                     return '';
@@ -446,7 +574,6 @@
                     DOM.vipBadge.classList.remove('flex');
                 }
 
-                // Re-initialize icons for newly injected HTML
                 lucide.createIcons({ root: DOM.receiptItems });
                 lucide.createIcons({ root: DOM.receiptTotals });
             };
@@ -455,21 +582,17 @@
                 renderFeatured();
                 renderInventory();
                 renderReceipt();
-                // Ensure icons in featured and inventory are rendered
                 lucide.createIcons({ root: DOM.featuredArea });
                 lucide.createIcons({ root: DOM.inventoryArea });
             };
 
-            // Bootstrap App
             const init = () => {
                 render();
             };
 
-            // Expose public API
             return { init, addToCart, removeFromCart };
         })();
 
-        // Run the application
         App.init();
     </script>
 </body>
